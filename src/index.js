@@ -13,7 +13,7 @@ class ClipboardListener {
 
   listen() {
     this.interval = setInterval(() => {
-      ncp.paste(value => {
+      ncp.paste((error, value) => {
         if (value !== this.lastValue) {
           this.lastValue = value;
           this.eventEmitter.emit('copy', this.lastValue);
