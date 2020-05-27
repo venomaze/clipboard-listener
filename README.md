@@ -14,7 +14,7 @@ git clone https://github.com/venomaze/clipboard-listener.git
 
 ## Usage
 
-```
+```js
 const ClipboardListener = require('clipboard-listener');
 
 const listener = new ClipboardListener(100);
