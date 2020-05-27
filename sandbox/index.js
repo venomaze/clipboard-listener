@@ -1,5 +1,6 @@
 const ClipboardListener = require('../src');
 
+// With custom time interval
 const listener = new ClipboardListener(100);
 
 /*
