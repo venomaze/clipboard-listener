@@ -6,7 +6,7 @@ const listener = new ClipboardListener(100);
 /*
  * Listening to the copy event
  */
-listener.on('copy', value => console.log(value));
+listener.on('change', value => console.log(value));
 
 /*
  * Stopping the copy listener

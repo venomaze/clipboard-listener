@@ -19,7 +19,7 @@ const ClipboardListener = require('clipboard-listener');
 
 const listener = new ClipboardListener(100);
 
-listener.on('copy', value => {
+listener.on('change', value => {
   console.log(value);
 });
 ```

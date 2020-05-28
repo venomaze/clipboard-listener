@@ -26,7 +26,7 @@ class ClipboardListener {
       ncp.paste((error, value) => {
         if (value !== this.lastValue) {
           this.lastValue = value;
-          this.eventEmitter.emit('copy', this.lastValue);
+          this.eventEmitter.emit('change', this.lastValue);
         }
       });
     }, this.timeInterval);
