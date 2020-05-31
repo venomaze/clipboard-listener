@@ -16,4 +16,10 @@ listener.on('change', value => console.log(value));
  */
 setTimeout(() => {
   listener.stop();
+  console.log('Stopped the listener');
+
+  setTimeout(() => {
+    listener.listen();
+    console.log('Listener is listening');
+  }, 5000);
 }, 5000);

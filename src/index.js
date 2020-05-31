@@ -14,6 +14,9 @@ class ClipboardListener {
     this.interval = null;
     this.lastValue = null;
     this.init = true;
+    this.isWatching = false;
+    this.event = 'change';
+    this.listener = null;
 
     this.watch();
   }
@@ -24,6 +27,10 @@ class ClipboardListener {
    * @access private
    */
   watch() {
+    if (!this.isWatching) {
+      this.isWatching = true;
+    }
+
     this.interval = setInterval(() => {
       ncp.paste((error, value) => {
         if (value !== this.lastValue) {
@@ -48,13 +55,28 @@ class ClipboardListener {
    * @param {Function} listener Event callback
    */
   on(event, listener) {
+    this.event = event;
+    this.listener = listener;
+
     return this.eventEmitter.on(event, listener);
+  }
+
+  listen() {
+    if (!this.isWatching) {
+      this.init = true;
+      this.watch();
+
+      return this.on(this.event, this.listener);
+    }
+
+    return null;
   }
 
   /**
    * Stop listening and also watching
    */
   stop() {
+    this.isWatching = false;
     clearInterval(this.interval);
     this.eventEmitter.removeAllListeners();
   }
