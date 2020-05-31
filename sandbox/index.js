@@ -18,6 +18,9 @@ setTimeout(() => {
   listener.stop();
   console.log('Stopped the listener');
 
+  /*
+   * Start listening again
+   */
   setTimeout(() => {
     listener.listen();
     console.log('Listener is listening');

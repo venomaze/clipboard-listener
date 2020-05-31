@@ -17,7 +17,10 @@ git clone https://github.com/venomaze/clipboard-listener.git
 ```js
 const ClipboardListener = require('clipboard-listener');
 
-const listener = new ClipboardListener(100);
+const listener = new ClipboardListener({
+  timeInterval: 100, // Default to 250
+  immediate: true, // Default to false
+});
 
 listener.on('change', value => {
   console.log(value);
