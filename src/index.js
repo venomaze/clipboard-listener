@@ -7,11 +7,13 @@ class ClipboardListener {
    *
    * @param {Number} timeInterval The time interval used in setInterval
    */
-  constructor(timeInterval = 250) {
+  constructor(options = {}) {
     this.eventEmitter = new events.EventEmitter();
-    this.timeInterval = timeInterval;
+    this.timeInterval = options.timeInterval || 250;
+    this.immediate = !!options.immediate; // False by default
     this.interval = null;
     this.lastValue = null;
+    this.init = true;
 
     this.watch();
   }
@@ -26,7 +28,14 @@ class ClipboardListener {
       ncp.paste((error, value) => {
         if (value !== this.lastValue) {
           this.lastValue = value;
-          this.eventEmitter.emit('change', this.lastValue);
+
+          if (this.immediate || !this.init) {
+            this.eventEmitter.emit('change', this.lastValue);
+          }
+
+          if (this.init) {
+            this.init = false;
+          }
         }
       });
     }, this.timeInterval);

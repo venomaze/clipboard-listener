@@ -1,7 +1,10 @@
 const ClipboardListener = require('../src');
 
 // With custom time interval
-const listener = new ClipboardListener(100);
+const listener = new ClipboardListener({
+  timeInterval: 100,
+  immediate: false,
+});
 
 /*
  * Listening to the copy event
