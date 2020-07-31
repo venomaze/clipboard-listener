@@ -4,8 +4,9 @@ const events = require('events');
 class ClipboardListener {
   /**
    * Create an event emitter and start watching
-   *
-   * @param {Number} timeInterval The time interval used in setInterval
+   * @constructor
+   * @param {Object} [options] - Custom options object (optional)
+   * @returns {void}
    */
   constructor(options = {}) {
     this.eventEmitter = new events.EventEmitter();
@@ -22,9 +23,9 @@ class ClipboardListener {
   }
 
   /**
-   * Start watching for the clipboard changes
-   *
+   * @property {Function} watch - Start watching for the clipboard changes
    * @access private
+   * @returns {void}
    */
   watch() {
     if (!this.isWatching) {
@@ -49,10 +50,10 @@ class ClipboardListener {
   }
 
   /**
-   * Listen to an event
-   *
-   * @param {String} event The event name
-   * @param {Function} listener Event callback
+   * @property {Function} on - Listen to an event
+   * @param {String} event - The event name
+   * @param {Function} listener - Event callback
+   * @returns {Object} - Event emitter listener
    */
   on(event, listener) {
     this.event = event;
@@ -61,6 +62,10 @@ class ClipboardListener {
     return this.eventEmitter.on(event, listener);
   }
 
+  /**
+   * @property {Function} listen - Start watching and listening again
+   * @returns {Object|null} - Returns event emitter listener if it wasn't watching already
+   */
   listen() {
     if (!this.isWatching) {
       this.init = true;
@@ -73,7 +78,8 @@ class ClipboardListener {
   }
 
   /**
-   * Stop listening and also watching
+   * @property {Function} stop - Stop listening and watching
+   * @returns {void}
    */
   stop() {
     this.isWatching = false;

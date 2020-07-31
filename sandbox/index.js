@@ -1,25 +1,27 @@
 const ClipboardListener = require('../src');
 
-// With custom time interval
+/*
+ * New instance with custom time interval
+ */
 const listener = new ClipboardListener({
   timeInterval: 100,
   immediate: false,
 });
 
 /*
- * Listening to the copy event
+ * Start listening to clipboard changes
  */
 listener.on('change', value => console.log(value));
 
 /*
- * Stopping the copy listener
+ * Stop the listener after 5 seconds
  */
 setTimeout(() => {
   listener.stop();
   console.log('Stopped the listener');
 
   /*
-   * Start listening again
+   * Start listening to clipboard changes again after 5 seconds
    */
   setTimeout(() => {
     listener.listen();
