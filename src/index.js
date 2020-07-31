@@ -64,7 +64,7 @@ class ClipboardListener {
 
   /**
    * @property {Function} listen - Start watching and listening again
-   * @returns {Object|null} - Returns event emitter listener if it wasn't watching already
+   * @returns {(Object|null)} - Returns event emitter listener if it wasn't watching already
    */
   listen() {
     if (!this.isWatching) {
