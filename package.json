@@ -1,7 +1,7 @@
 {
   "name": "clipboard-listener",
-  "version": "0.2.1",
-  "description": "Node.js event listener for clipboard changes",
+  "version": "0.2.2",
+  "description": "📋 Node.js event listener for clipboard changes.",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
