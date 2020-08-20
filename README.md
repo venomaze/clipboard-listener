@@ -1,6 +1,7 @@
 # clipboard-listener
 
-📋 Node.js event listener for clipboard changes.  
+> Node.js event listener for clipboard changes.
+
 Clipboard-listener uses the [node-copy-paste](https://github.com/xavi-/node-copy-paste) package to get the data from clipboard.
 
 ## Installation
